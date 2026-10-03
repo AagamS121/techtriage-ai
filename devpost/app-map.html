@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TechTriage AI · App map</title>
+  <style>
+    body{max-width:760px;margin:3rem auto;padding:0 1.25rem;font:16px/1.55 system-ui,sans-serif;color:#162735;background:#f7faf9}
+    h1,h2{line-height:1.2} h2{margin-top:2.2rem} a{color:#086c72} code{background:#e9f1f0;padding:.1rem .25rem;border-radius:3px;overflow-wrap:anywhere}
+    li{margin:.7rem 0} .note{border-left:4px solid #188784;padding:.4rem 1rem;background:#eaf5f3}
+  </style>
+</head>
+<body>
+  <h1>TechTriage AI · App map</h1>
+  <p>A short guide to the Windows 11 Wi-Fi after sleep proof of concept. Open the project from its root with <code>npm install</code> and <code>npm run dev</code>, then visit <code>http://localhost:3000</code>.</p>
+  <h2>Follow one answer</h2>
+  <ol>
+    <li><a href="../src/app/page.tsx"><code>src/app/page.tsx</code></a> collects an answer and optional note, then calls <code>submitAnswer</code>. It renders the next question, evidence history, or final report.</li>
+    <li><a href="../src/lib/flow.ts"><code>src/lib/flow.ts</code></a> validates the choice, records exactly what the user reported, and chooses the next safe question or outcome. For “Neither device works,” it asks whether both devices were on the same Wi-Fi before treating the comparison as evidence.</li>
+    <li>The same module's <code>formatReport</code> turns the observations into text for IT. An invalid comparison stays visible and labeled invalid.</li>
+    <li><a href="../src/app/api/highlights/route.ts"><code>src/app/api/highlights/route.ts</code></a> may ask Gemini which recorded evidence IDs to emphasize. It rejects unknown IDs and returns standard highlights when the key or service is unavailable. The model never chooses a diagnostic branch.</li>
+  </ol>
+  <h2>Try it</h2>
+  <p>Use the sample issue. Choose “Neither device works,” then “No, different networks.” The app records that the comparison was invalid and offers one repeat. Finish a branch, copy the report, and check that the invalid observation remains. Try “Could not test” and “Stop and create report” to see how uncertainty is preserved.</p>
+  <p class="note">The browser tab holds the case. There is no automatic inspection or repair. Do not enter passwords or private support data in the demo.</p>
+  <h2>Checks</h2>
+  <p><code>npm test</code> covers the major branches. <code>npm run build</code> checks the production build. The GitHub Actions workflow also starts the production server and checks the page and fallback report API.</p>
+</body>
+</html>
