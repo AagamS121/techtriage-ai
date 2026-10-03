@@ -4,6 +4,8 @@ An evidence-first troubleshooting proof of concept for one scenario: a Windows 1
 
 Built for [Devpost Build With AI: Basics](https://learn-ai-basics.devpost.com/). Planning documents are in `devpost/`. The synchronized scope and PRD summarize the approved local Devpost Skill Pack interviews; replace them with their fuller local originals when available.
 
+The [app map](devpost/app-map.html) follows one answer from the interface through the decision flow to the report.
+
 ## What it does
 
 1. Enter an issue or use the editable sample.
