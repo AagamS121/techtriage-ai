@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Type } from "@google/genai";
 import { z } from "zod";
 
 export const runtime = "nodejs";
@@ -43,15 +43,11 @@ export async function POST(request: Request) {
       model,
       contents: prompt,
       config: {
-        responseFormat: {
-          text: {
-            mimeType: "application/json",
-            schema: {
-              type: "object",
-              properties: { evidenceIds: { type: "array", items: { type: "string" } } },
-              required: ["evidenceIds"]
-            }
-          }
+        responseMimeType: "application/json",
+        responseSchema: {
+          type: Type.OBJECT,
+          properties: { evidenceIds: { type: Type.ARRAY, items: { type: Type.STRING } } },
+          required: ["evidenceIds"]
         }
       }
     }), new Promise<never>((_, reject) => setTimeout(() => reject(new Error("AI timeout")), 8000))]);
