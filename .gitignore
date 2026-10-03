@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+devpost/learner-profile.md
+*.tsbuildinfo
+coverage/
+.DS_Store
