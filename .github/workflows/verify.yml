@@ -11,7 +11,7 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - run: npm audit --json || true
+      - run: npm audit --audit-level=moderate
       - run: npm test
       - run: npm run typecheck
       - run: npm run build
