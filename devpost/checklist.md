@@ -11,7 +11,8 @@ build_mode: fast
 - [x] Guided intake, deterministic checks, evidence history, and report coded.
 - [x] Optional structured Gemini evidence highlighting and labeled fallback coded.
 - [x] Branch unit tests pass in the current workspace.
-- [ ] Install packages and pass a production Next.js build.
+- [x] Install packages, pass branch tests, and pass a production Next.js build in GitHub Actions.
+- [ ] Pass a production server smoke test for the page and report API in GitHub Actions.
 - [ ] Run the app in a browser and review responsive screens, copy behavior, and all paths.
 - [ ] Configure a live Gemini key/model and verify AI-assisted output; keep the key private.
 - [ ] Sync the fuller locally approved scope and PRD files.
@@ -20,6 +21,7 @@ build_mode: fast
 
 ## Code Tour and App Map
 
+- `devpost/app-map.html`: offline take-home map with a concrete answer-to-report path.
 - `src/app/page.tsx`: user interface and session state.
 - `src/lib/flow.ts`: safe deterministic questions, transitions, evidence, and report.
 - `src/app/api/highlights/route.ts`: optional Gemini call with schema and ID validation.
