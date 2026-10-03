@@ -13,6 +13,7 @@ build_mode: fast
 - [x] Branch unit tests pass in the current workspace.
 - [x] Install packages, pass branch tests, and pass a production Next.js build in GitHub Actions.
 - [ ] Pass a production server smoke test for the page and report API in GitHub Actions.
+- [ ] Review the dependency audit warnings reported during CI installation.
 - [ ] Run the app in a browser and review responsive screens, copy behavior, and all paths.
 - [ ] Configure a live Gemini key/model and verify AI-assisted output; keep the key private.
 - [ ] Sync the fuller locally approved scope and PRD files.
