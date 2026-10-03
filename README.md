@@ -22,11 +22,10 @@ Requires Node.js 20.9 or newer and npm.
 
 ```bash
 npm install
-cp .env.example .env.local
 npm run dev
 ```
 
-Open `http://localhost:3000`. The full guided flow and report work without an AI key. To enable Gemini evidence highlights, set `GEMINI_API_KEY` and `GEMINI_MODEL` in `.env.local`, using a model available to your Google AI Studio account that supports structured output. Restart the development server. Never commit `.env.local`.
+Open `http://localhost:3000`. The full guided flow and report work without an AI key. To enable Gemini evidence highlights, make `.env.local` from `.env.example` (`copy .env.example .env.local` in Windows Command Prompt, or `cp .env.example .env.local` on macOS/Linux). Set `GEMINI_API_KEY` and `GEMINI_MODEL` in `.env.local`, using a model available to your Google AI Studio account that supports structured output. Restart the development server. Never commit `.env.local`.
 
 ```bash
 npm test
