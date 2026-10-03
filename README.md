@@ -18,7 +18,7 @@ No account, database, remote inspection, or automatic repair is involved. The ap
 
 ## Run locally
 
-Requires Node.js 20 or newer and npm.
+Requires Node.js 20.9 or newer and npm.
 
 ```bash
 npm install
@@ -30,6 +30,7 @@ Open `http://localhost:3000`. The full guided flow and report work without an AI
 
 ```bash
 npm test
+npm run typecheck
 npm run build
 ```
 
