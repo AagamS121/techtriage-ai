@@ -13,3 +13,18 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
+      - name: Smoke test the production server
+        run: |
+          npm run start -- --port 3000 > /tmp/techtriage-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://localhost:3000/ > /tmp/techtriage-home.html; then break; fi
+            sleep 1
+          done
+          grep -q 'TechTriage AI' /tmp/techtriage-home.html
+          response=$(curl --fail --silent --show-error \
+            -H 'Content-Type: application/json' \
+            -d '{"issue":"Sample Windows 11 Wi-Fi issue","outcome":"inconclusive","evidence":[{"id":"e1","text":"Could not compare devices"}]}' \
+            http://localhost:3000/api/highlights)
+          echo "$response" | node -e 'let input=""; process.stdin.on("data", chunk => input += chunk); process.stdin.on("end", () => { const data = JSON.parse(input); if (data.source !== "standard" || data.evidenceIds?.[0] !== "e1") process.exit(1); });'
